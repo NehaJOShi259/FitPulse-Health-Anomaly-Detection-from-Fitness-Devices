@@ -48,6 +48,7 @@ The aim of this milestone is to extract meaningful features from fitness data, m
 ![Heart Rate Trend](images/hr_trend.png)
 
 ### Daily Steps Trend  
+
 ![Daily Steps Trend](images/steps_trend.png)
 
 ### Sleep Duration Trend  
