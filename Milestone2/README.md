@@ -1,93 +1,74 @@
 # Milestone 2: Feature Extraction and Modeling
 
-## Objective
-
-The goal of this milestone is to extract meaningful insights from the fitness dataset (`Clean.csv`) by:
-
-1. Extracting statistical and time-series features for Heart Rate, Steps, and Sleep.
-2. Modeling trends over time using Prophet to identify deviations from expected behavior.
-3. Clustering behavioral patterns to identify normal and atypical user behavior.
+## Objective  
+The aim of this milestone is to extract meaningful features from fitness data, model temporal trends using Prophet, and identify behavioral patterns using clustering. This sets the foundation for anomaly detection in future milestones.
 
 ---
 
-## Dataset Description
-
-* **File:** `Clean.csv`
-* **Key Columns Used:**
-
-  * `Heart Rate` → heart rate readings over time
-  * `Daily Steps` → daily step counts
-  * `Sleep Duration` → duration of sleep
-  * `Age`, `BMI Category`, `Stress Level`, `Physical Activity Level` → used for clustering
-  * `Timestamp` → time-series index
+## Dataset Description  
+- **Dataset file:** `data/Clean.csv`  
+- **Key columns used:**  
+  - Time‑series: `Heart Rate`, `Daily Steps`, `Sleep Duration`  
+  - Demographic & behavioral: `Age`, `BMI Category`, `Stress Level`, `Physical Activity Level`  
+  - `Timestamp` used as the time index for trend modeling.
 
 ---
 
 ## Steps Performed
 
-### 1. Feature Extraction
+### 1. Feature Extraction  
+- Extracted statistical features (mean, standard deviation, skewness, kurtosis).  
+- Extracted automated time‑series features using **TSFresh** for Heart Rate, Steps, and Sleep.
 
-* Computed **statistical features**: mean, standard deviation, skewness, kurtosis for Heart Rate, Steps, and Sleep.
-* Used **TSFresh** to extract additional time-series features like trends, autocorrelations, and frequency characteristics.
+### 2. Trend Modeling  
+- Used **Facebook Prophet** to model and forecast Heart Rate, Steps, and Sleep trends over time.  
+- Computed expected trends with confidence intervals.
 
-### 2. Trend Modeling
-
-* Modeled temporal patterns using **Facebook Prophet** for Heart Rate, Steps, and Sleep.
-* Forecasted expected values and calculated residuals to identify unusual deviations.
-* Visualized trends with confidence intervals for each metric.
-
-### 3. Behavioral Clustering
-
-* Combined TSFresh features with demographic and activity data.
-* Encoded categorical variables (`BMI Category`, `Stress Level`, `Physical Activity Level`).
-* Imputed missing values using column mean.
-* Scaled features using **StandardScaler**.
-* Applied **KMeans clustering** to identify behavioral groups.
-* Visualized clusters with **PCA**.
+### 3. Behavioral Clustering  
+- Combined features from TSFresh and demographic/activity columns.  
+- Encoded categorical data and handled missing values.  
+- Scaled features and applied **KMeans clustering**.  
+- Visualized clusters with PCA.
 
 ---
 
-## Tools and Libraries Used
-
-* Python 3.x
-* pandas
-* numpy
-* TSFresh
-* Prophet
-* scikit-learn
-* matplotlib
+## Tools and Libraries Used  
+- Python 3.x  
+- `pandas`, `numpy`  
+- `tsfresh`  
+- `prophet`  
+- `scikit‑learn`  
+- `matplotlib`
 
 ---
 
-## Observations
+## Visual Outputs
 
-* **Statistical Features:**
+### Heart Rate Trend  
+![Heart Rate Trend](images/hr_trend.png)
 
-  * Heart Rate Mean: (add value)
-  * Steps Standard Deviation: (add value)
-  * Sleep Duration Skewness: (add value)
+### Daily Steps Trend  
+![Daily Steps Trend](images/steps_trend.png)
 
-* **Trend Analysis:**
+### Sleep Duration Trend  
+![Sleep Duration Trend](images/sleep_trend.png)
 
-  * Forecast plots showed expected trends and deviations for each metric.
-  * Residual analysis highlighted potential anomalies.
-
-* **Behavioral Clustering:**
-
-  * Cluster 0 → Normal behavior
-  * Cluster 1 → High stress / atypical patterns
-  * Cluster 2 → Moderate deviations
+### Behavioral Clusters  
+![Behavioral Clusters](images/clusters.png)
 
 ---
 
 ## Folder Structure
 
-```
 Milestone2/
 ├── feature_extraction.py
 ├── modeling.py
 ├── requirements.txt
 ├── README.md
-└── data/
-    └── Clean.csv
-
+├── data/
+│ └── Clean.csv
+└── images/
+├── hr_trend.png
+├── steps_trend.png
+├── sleep_trend.png
+└── clusters.png
