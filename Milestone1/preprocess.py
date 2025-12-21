@@ -5,13 +5,19 @@ from pathlib import Path
 
 def load_data(data_path):
     """
-    Load raw fitness datasets from CSV files.
+    Load raw fitness datasets from CSV files and convert timestamps to UTC.
     """
     activity = pd.read_csv(data_path / "dailyActivity_merged.csv")
-    heart = pd.read_csv(data_path / "heartrate_seconds_merged.csv")
+    heart = pd.read_csv(data_path / "heartrate_seconds_sample.csv")
     sleep = pd.read_csv(data_path / "sleepDay_merged.csv")
-    
+
+    # Convert timestamps to datetime (UTC)
+    activity["ActivityDate"] = pd.to_datetime(activity["ActivityDate"], utc=True)
+    heart["Time"] = pd.to_datetime(heart["Time"], utc=True)
+    sleep["SleepDay"] = pd.to_datetime(sleep["SleepDay"], utc=True)
+
     return activity, heart, sleep
+
 
 
 def main():
