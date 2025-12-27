@@ -56,20 +56,3 @@ The aim of this milestone is to extract meaningful features from fitness data, m
 
 ### Behavioral Clusters  
 ![Behavioral Clusters](images/clusters.png)
-
----
-
-## Folder Structure
-
-Milestone2/
-├── feature_extraction.py
-├── modeling.py
-├── requirements.txt
-├── README.md
-├── data/
-│ └── Clean.csv
-└── images/
-├── hr_trend.png
-├── steps_trend.png
-├── sleep_trend.png
-└── clusters.png
